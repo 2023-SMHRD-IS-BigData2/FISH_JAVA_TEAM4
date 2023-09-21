@@ -18,6 +18,8 @@ public class Fishing {
 			System.out.println("3번 미끼입니다. 큽니다");
 		}
 		return bait;
+		
+		
 	}
 	 
 

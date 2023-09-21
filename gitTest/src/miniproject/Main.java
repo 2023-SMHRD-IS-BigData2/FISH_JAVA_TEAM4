@@ -5,6 +5,7 @@ public class Main {
 		Fishing fs = new Fishing();
 		fs.fishing();
 		
+		
 	}
 
 }
