@@ -83,11 +83,12 @@ public class DAO {
 	}
 
 	// 로그인
-	public void userLogin() {
+	public String userLogin() {
 		getConn();
 		// sql문 통로
 		String sql = "select * from MEMBER";
 		PreparedStatement psmt;
+		String inputId = null;
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -97,7 +98,7 @@ public class DAO {
 			while (run) {
 				Scanner scan = new Scanner(System.in);
 				System.out.println("아이디를 입력하세요 >>");
-				String inputId = scan.next();
+				inputId = scan.next();
 				System.out.println("비밀번호를 입력하세요 >>");
 				String inputPw = scan.next();
 				boolean isLogin = true;
@@ -111,11 +112,13 @@ public class DAO {
 				}
 				if (isLogin) {
 					System.out.println("로그인이 실패했습니다.");
+					isLogin=true;
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return inputId;
 	}
 
 	// ranking 넣기
@@ -162,7 +165,7 @@ public class DAO {
 		getConn();
 		try {
 
-			String sql = "select * from RANKING";
+			String sql = "select * from RANKING ORDER BY RANKING_MAX_SIZE DESC";
 			psmt = conn.prepareStatement(sql);
 			// select 할 때만 달라지는 부분!!
 			ResultSet rs = psmt.executeQuery();
@@ -172,9 +175,10 @@ public class DAO {
 				String MAX_FISH_NAME = rs.getString(2);
 				String MAX_FISH_SIZE = rs.getString(3);
 
-				System.out.println(NAME);
-				System.out.println(MAX_FISH_NAME);
-				System.out.println(MAX_FISH_SIZE);
+				System.out.print(NAME+" ");
+				System.out.print(MAX_FISH_NAME+" ");
+				System.out.print(MAX_FISH_SIZE);
+				System.out.println();
 
 			}
 
