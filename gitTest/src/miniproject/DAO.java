@@ -77,7 +77,7 @@ public class DAO {
 				e.printStackTrace();
 			}
 
-		}
+		} 
 
 		// 6번 연결 끊기
 		// commit이 됨!!

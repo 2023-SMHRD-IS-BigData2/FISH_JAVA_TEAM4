@@ -222,7 +222,7 @@ public class Controller {
 		} else {
 			System.out.println("오늘은 잡은 물고기가 없습니다.");
 		}
-
+ 
 	}
 
 	public void printrank() {

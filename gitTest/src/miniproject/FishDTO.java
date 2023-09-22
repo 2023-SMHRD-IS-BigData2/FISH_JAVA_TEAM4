@@ -18,7 +18,7 @@ public class FishDTO {
 		super();
 		this.name = name;
 		this.size = size;
-	}
+	} 
 
 	public String getName() {
 		return name;
