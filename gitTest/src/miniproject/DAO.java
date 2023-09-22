@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 public class DAO {
 
 	// 필드
@@ -19,9 +21,9 @@ public class DAO {
 	private void getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String user = "service";// db계정 유저 이름
-			String password = "12345";
-			String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+			String user = "campus_22IS_BIG2_mini_4";// db계정 유저 이름
+			String password = "smhrd4";
+			String url = "jdbc:oracle:thin:@project-db-campus.smhrd.com:1524:xe";
 			conn = DriverManager.getConnection(url, user, password);
 
 			if (conn != null) {
@@ -41,7 +43,7 @@ public class DAO {
 	public void insertUser() {
 		Scanner scan = new Scanner(System.in);
 		getConn();
-		String sql = "insert into member values (?,?)";
+		String sql = "insert into MEMBER values(?,?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -73,14 +75,47 @@ public class DAO {
 					conn.close();
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 		}
 
-		// 6번 연결 끊기
-		// commit이 됨!!
+	}
+
+	// 로그인
+	public void userLogin() {
+		getConn();
+		// sql문 통로
+		String sql = "select * from MEMBER";
+		PreparedStatement psmt;
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			// sql 실행
+			ResultSet rs = psmt.executeQuery();
+			boolean run = true;
+			while (run) {
+				Scanner scan = new Scanner(System.in);
+				System.out.println("아이디를 입력하세요 >>");
+				String inputId = scan.next();
+				System.out.println("비밀번호를 입력하세요 >>");
+				String inputPw = scan.next();
+				boolean isLogin = true;
+				
+				while (rs.next()) {
+					if (inputId.equals(rs.getString(1)) && inputPw.equals(rs.getString(2))) {
+						System.out.println("로그인이 성공했습니다.");
+						isLogin = false;
+						run =false;
+					}
+				}
+				if (isLogin) {
+					System.out.println("로그인이 실패했습니다.");
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// ranking 넣기
@@ -178,7 +213,6 @@ public class DAO {
 				int STAGE_FISH_LEVEL = rs.getInt(3);
 				int STAGE_FISH_INDEX = rs.getInt(4);
 				array.add(new FishDTO(STAGE_NAME, STAGE_FISH_SIZE, STAGE_FISH_LEVEL, STAGE_FISH_INDEX));
-				
 
 			}
 
