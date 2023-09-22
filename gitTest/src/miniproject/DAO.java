@@ -6,11 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DAO {
 
 	// 필드
-	private Connection Conn;
+	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
 
@@ -18,150 +19,185 @@ public class DAO {
 	private void getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:project-db-campus.smhrd.com:1524:xe";
-			String user = "campus_22IS_BIG2_mini_4";
-			String password = "smhrd4";
+			String user = "service";// db계정 유저 이름
+			String password = "12345";
+			String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+			conn = DriverManager.getConnection(url, user, password);
 
+			if (conn != null) {
+				System.out.println("연결 성공");
+			} else {
+				System.out.println("연결 실패");
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	// 회원가입
+	public void insertUser() {
+		Scanner scan = new Scanner(System.in);
+		getConn();
+		String sql = "insert into member values (?,?)";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+
+			System.out.println("아이디를 입력하세요.");
+			String MEMBER_ID = scan.next();
+			System.out.println("패스워드를 입력하세요.");
+			String MEMBER_PW = scan.next();
+
+			psmt.setString(1, MEMBER_ID);
+			psmt.setString(2, MEMBER_PW);
+
+			int row = psmt.executeUpdate();
+
+			if (row > 0) {
+				System.out.println("insert 완료");
+			} else {
+				System.out.println("insert 실패");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				Conn = DriverManager.getConnection(url, user, password);
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+
+					conn.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		// 6번 연결 끊기
+		// commit이 됨!!
+	}
+
+	// ranking 넣기
+	public void insertRanking(String NAME, String MAX_FISH_NAME, double MAX_FISH_SIZE) {
+		getConn();
+		String sql = "insert into RANKING values (?,?,?)";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, NAME);
+			psmt.setString(2, MAX_FISH_NAME);
+			psmt.setDouble(3, MAX_FISH_SIZE);
+
+			int row = psmt.executeUpdate();
+
+			if (row > 0) {
+				System.out.println("insert 완료");
+			} else {
+				System.out.println("insert 실패");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+
+					conn.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 
-			if (Conn != null) {
-				System.out.println("connect success");
-			} else {
-				System.out.println("connect fail");
-			}
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
 		}
 
 	}
 
-	// insert 회원가입
-	public int makeUser
-	{
+	// user별 랭킹 불러오기
+	public void rank() {
+
 		getConn();
-
-		// sql통로
-		String sql = "insert into member values(?,?)";
-		int row = 0;
 		try {
-			psmt = Conn.prepareStatement(sql);
-			psmt.setString(1, dto.getId());
-			psmt.setString(2, dto.getPw());
 
-			// sql실행
-			row = psmt.executeUpdate();
+			String sql = "select * from RANKING";
+			psmt = conn.prepareStatement(sql);
+			// select 할 때만 달라지는 부분!!
+			ResultSet rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				String NAME = rs.getString(1);
+				String MAX_FISH_NAME = rs.getString(2);
+				String MAX_FISH_SIZE = rs.getString(3);
+
+				System.out.println(NAME);
+				System.out.println(MAX_FISH_NAME);
+				System.out.println(MAX_FISH_SIZE);
+
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			getClose();
-		}
-		return row;
-	}
-
-	// insert 랭킹 넣는거
-	public int getjoin{
-
-	getConn();
-
-	// sql통로
-	String sql = "insert into member values(?,?)";
-	int row = 0;try
-	{
-		psmt = Conn.prepareStatement(sql);
-		psmt.setString(1, dto.getId());
-		psmt.setString(2, dto.getPw());
-
-		// sql실행
-		row = psmt.executeUpdate();
-
-	}catch(SQLException e)
-	{		e.printStackTrace();
-	}finally{
-		getClose();
-	}
-	return row;
-
-	// select user별로 랭킹 불러오기
-	public selUserRank() {
-				getConn();
-				ArrayList<MemberDTO> list_dto = new ArrayList<>();
-
-				MemberDTO mdto = null;
-				String sql = "select * from member";
-				try {
-					psmt = conn.prepareStatement(sql);
-					rs = psmt.executeQuery();
-
-					while (rs.next()) {
-						String id = rs.getString(1);
-						String pw = rs.getString(2);
-						String name = rs.getString(3);
-						int age = rs.getInt(4);
-
-						mdto = new MemberDTO(id, pw, name, age);
-						list_dto.add(mdto);
-
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} finally {
-					getClose();
+			try {
+				if (psmt != null) {
+					psmt.close();
 				}
-				return list_dto;
+				if (conn != null) {
+
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	// 물고기 전체 목록 불러오기
+	public ArrayList<FishDTO> fishAll() {
+		ArrayList<FishDTO> array = new ArrayList<>();
+		getConn();
+		try {
+
+			String sql = "select * from STAGE";
+			psmt = conn.prepareStatement(sql);
+			// select 할 때만 달라지는 부분!!
+			ResultSet rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				String STAGE_NAME = rs.getString(1);
+				double STAGE_FISH_SIZE = rs.getDouble(2);
+				int STAGE_FISH_LEVEL = rs.getInt(3);
+				int STAGE_FISH_INDEX = rs.getInt(4);
+				array.add(new FishDTO(STAGE_NAME, STAGE_FISH_SIZE, STAGE_FISH_LEVEL, STAGE_FISH_INDEX));
+				
+
 			}
 
-	// select 물고기 전체 목록 불러오기
-	public selfishAll() {
-				getConn();
-
-	ArrayList<MemberDTO> list_dto = new ArrayList<>();
-
-	MemberDTO mdto = null;
-	String sql = "select * from miniproject where STAGE = ST1_FISH_NAME ";try
-	{
-		psmt = Conn.prepareStatement(sql);
-		rs = psmt.executeQuery();
-
-		while (rs.next()) {
-			String id = rs.getString(1);
-			String pw = rs.getString(2);
-			String name = rs.getString(3);
-			int age = rs.getInt(4);
-
-			mdto = new MemberDTO(id, pw, name, age);
-			list_dto.add(mdto);
-
-		}
-	}catch(
-	SQLException e)
-	{
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}finally
-	{
-		getClose();
-	}return list_dto;
-
-	}
-
-	// close
-	private void getClose() {
-		try {
-			if (rs != null)
-				rs.close();
-			if (psmt != null)
-				psmt.close();
-			if (Conn != null)
-				Conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		return array;
 	}
+
 }

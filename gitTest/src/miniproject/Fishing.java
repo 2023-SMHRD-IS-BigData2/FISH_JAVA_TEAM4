@@ -10,7 +10,7 @@ public class Fishing {
 	private double max_size;
 	private String max_name;
 	private Scanner sc = new Scanner(System.in);
-	private ArrayList<Fish> todayGet = new ArrayList<>();
+	private ArrayList<FishDTO> todayGet = new ArrayList<>();
 
 //	 스테이지 선택 (변경 가능성 높음)
 	public int getStage() {
@@ -142,7 +142,7 @@ public class Fishing {
 		String result = String.format("%.2f", resultSize);
 		System.out.println("잡은 물고기는 " + getFishname + "이었습니다");
 		System.out.println("잡은 물고기 크기는" + result + "cm입니다");
-		Fish fs = new Fish(getFishname, getFishsize);
+		FishDTO fs = new FishDTO(getFishname, getFishsize);
 		todayGet.add(fs);
 		if (Double.valueOf(result) > max_size) {
 			max_size = Double.valueOf(result);

@@ -1,12 +1,12 @@
 package miniproject;
 
-public class Fish {
+public class FishDTO {
 	private String name;
 	private double size;
 	private int level;
 	private int index;
 	
-	public Fish(String name, double size, int level, int index) {
+	public FishDTO(String name, double size, int level, int index) {
 		super();
 		this.name = name;
 		this.size = size;
@@ -14,7 +14,7 @@ public class Fish {
 		this.index = index;
 	}
 	
-	public Fish(String name, double size) {
+	public FishDTO(String name, double size) {
 		super();
 		this.name = name;
 		this.size = size;
