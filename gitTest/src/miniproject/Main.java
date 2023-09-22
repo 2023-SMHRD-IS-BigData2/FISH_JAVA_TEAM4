@@ -7,7 +7,7 @@ public class Main {
 		fs.fishing(stage);
 		fs.finalResult();
 		fs.printrank();
-		
+		 
 		  
 	}
 
