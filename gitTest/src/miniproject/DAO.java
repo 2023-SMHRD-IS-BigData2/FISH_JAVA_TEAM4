@@ -19,9 +19,9 @@ public class DAO {
 	private void getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String user = "service";// db계정 유저 이름
-			String password = "12345";
-			String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+			String user = "campus_22IS_BIG2_mini_4";// db계정 유저 이름
+			String password = "smhrd4";
+			String url = "jdbc:oracle:thin:@project-db-campus.smhrd.com:1524:xe";
 			conn = DriverManager.getConnection(url, user, password);
 
 			if (conn != null) {

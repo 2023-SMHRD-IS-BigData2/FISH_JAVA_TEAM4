@@ -6,6 +6,7 @@ public class Main {
 		int stage = fs.getStage();
 		fs.fishing(stage);
 		fs.finalResult();
+		fs.printrank();
 		
 		
 	}
