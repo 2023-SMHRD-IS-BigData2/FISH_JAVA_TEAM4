@@ -26,11 +26,11 @@ public class DAO {
 			String url = "jdbc:oracle:thin:@project-db-campus.smhrd.com:1524:xe";
 			conn = DriverManager.getConnection(url, user, password);
 
-			if (conn != null) {
-				System.out.println("연결 성공");
-			} else {
-				System.out.println("연결 실패");
-			}
+//			if (conn != null) {
+//				System.out.println("연결 성공");
+//			} else {
+//				System.out.println("연결 실패");
+//			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -58,11 +58,11 @@ public class DAO {
 
 			int row = psmt.executeUpdate();
 
-			if (row > 0) {
-				System.out.println("insert 완료");
-			} else {
-				System.out.println("insert 실패");
-			}
+//			if (row > 0) {
+//				System.out.println("insert 완료");
+//			} else {
+//				System.out.println("insert 실패");
+//			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -91,28 +91,28 @@ public class DAO {
 		String inputId = null;
 
 		try {
-			psmt = conn.prepareStatement(sql);
-			// sql 실행
-			ResultSet rs = psmt.executeQuery();
 			boolean run = true;
 			while (run) {
+				psmt = conn.prepareStatement(sql);
+				// sql 실행
+				ResultSet rs = psmt.executeQuery();
 				Scanner scan = new Scanner(System.in);
 				System.out.println("아이디를 입력하세요 >>");
 				inputId = scan.next();
 				System.out.println("비밀번호를 입력하세요 >>");
 				String inputPw = scan.next();
-				boolean isLogin = true;
+				boolean isLogin = false;
 				
 				while (rs.next()) {
 					if (inputId.equals(rs.getString(1)) && inputPw.equals(rs.getString(2))) {
 						System.out.println("로그인이 성공했습니다.");
-						isLogin = false;
-						run =false;
+						isLogin = true;
+						run = false;
 					}
 				}
-				if (isLogin) {
+				if (!isLogin) {
 					System.out.println("로그인이 실패했습니다.");
-					isLogin=true;
+					continue;
 				}
 			}
 		} catch (SQLException e) {
@@ -135,11 +135,11 @@ public class DAO {
 
 			int row = psmt.executeUpdate();
 
-			if (row > 0) {
-				System.out.println("insert 완료");
-			} else {
-				System.out.println("insert 실패");
-			}
+//			if (row > 0) {
+//				System.out.println("insert 완료");
+//			} else {
+//				System.out.println("insert 실패");
+//			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
