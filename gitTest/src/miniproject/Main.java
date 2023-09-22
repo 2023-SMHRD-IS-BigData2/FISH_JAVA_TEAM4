@@ -8,7 +8,7 @@ public class Main {
 		fs.finalResult();
 		fs.printrank();
 		
-		
+		 
 	}
 
 }
