@@ -91,9 +91,14 @@ public class Fishing {
 			System.out.println();
 			if (cnt >= 10) {
 				// 낚시 성공시 출력될 문장
-				System.out.println("낚싯대를 잡아 올렸습니다!");
+				System.out.println("낚싯대를 잡아챘습니다!");
 				baitcnt--;
-				fightFish();
+				now = System.currentTimeMillis();
+				currentTime = 0;
+				while (currentTime - now < 500) {
+					currentTime = System.currentTimeMillis();
+				}
+				fightFish(fishSize);
 			} else {
 				// 낚시 실패시 출력될 문장
 				System.out.println("놓쳤습니다...");
@@ -112,7 +117,7 @@ public class Fishing {
 	}
 
 	// 낚싯대를 잡아채는 방법과 낚인 물고기 레벨에 따라 낚시 성공 실패를 가를 예정
-	public void fightFish() {
+	public void fightFish(int fishSize) {
 		long now = System.currentTimeMillis();
 		long currentTime = 0;
 		while (currentTime - now < 3000) {
@@ -120,22 +125,22 @@ public class Fishing {
 		}
 		// 입질때 느낌표 개수에 따라서 fishsize가 변경됨
 		// 작은 물고기는 섬세한 낚아채기, 큰 물고기는 강력한 낚아채기가 필요
-		int fishsize = 1;
 		System.out.println("물고기를 낚아챌 방법을 고르세요.");
 		System.out.println("1. 섬세한 낚아채기 2. 강력한 낚아채기");
 		String catching = sc.next();
-		if ((catching.equals("1") && fishsize == 1) || (catching.equals("2") && (fishsize == 2 || fishsize == 3))) {
+		if ((catching.equals("1") && fishSize == 1) || (catching.equals("2") && (fishSize == 2 || fishSize == 3))) {
 			System.out.println("물고기를 낚았습니다!");
-			resultFish();
+			resultFish(fishSize);
 		} else {
 			System.out.println("물고기가 도망갔습니다...");
-
 		}
 
 	}
 
 	// 낚시 결과물
-	public void resultFish() {
+	public void resultFish(int fishSize) {
+		
+		
 		String getFishname = "송사리";
 		double getFishsize = 0;
 		double resultSize = getFishsize + rd.nextDouble() * 10;
@@ -157,6 +162,7 @@ public class Fishing {
 	}
 	
 	public void finalResult() {
+		
 		System.out.println("오늘 잡은 물고기 목록입니다.");
 		for(int i = 0; i<todayGet.size(); i++) {
 			System.out.println(todayGet.get(i).getName());
