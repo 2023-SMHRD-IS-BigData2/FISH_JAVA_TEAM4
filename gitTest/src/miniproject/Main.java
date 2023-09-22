@@ -1,9 +1,9 @@
 package miniproject;
+
 public class Main {
 
 	public static void main(String[] args) {
 
-		
 		DAO mdao = new DAO();
 		mdao.insertUser();
 		mdao.userLogin();
@@ -12,10 +12,7 @@ public class Main {
 		fs.fishing(stage);
 		fs.finalResult();
 		fs.printrank();
-		 
-		  
 
 	}
 
 }
-
