@@ -16,6 +16,7 @@ public class Controller {
 //	 스테이지 선택 (변경 가능성 높음)
 	public int getStage() {
 		System.out.println("스테이지를 선택하세요");
+		System.out.println("1. 낚시터easy 2. 강가normal 3.바닷가hard");
 		int stage = sc.nextInt();
 		if (stage == 1) {
 			System.out.println("스테이지 1 입니다");
@@ -138,11 +139,6 @@ public class Controller {
 
 	// 낚싯대를 잡아채는 방법과 낚인 물고기 레벨에 따라 낚시 성공 실패를 가를 예정
 	public void fightFish(FishDTO newfish) {
-		long now = System.currentTimeMillis();
-		long currentTime = 0;
-		while (currentTime - now < 1000) {
-			currentTime = System.currentTimeMillis();
-		}
 		// 입질때 느낌표 개수에 따라서 fishsize가 변경됨
 		// 작은 물고기는 섬세한 낚아채기, 큰 물고기는 강력한 낚아채기가 필요
 		while (true) {
