@@ -11,7 +11,7 @@ public class Main_View {
 		Scanner sc = new Scanner(System.in);
 		Controller fs = new Controller();
 		Art art = new Art();
-		while (true) {
+		while (true) { 
 			art.title();
 			System.out.println("1. 회원가입 2. 로그인&게임시작 3. 랭킹확인 4. 게임종료");
 			String select = sc.next();

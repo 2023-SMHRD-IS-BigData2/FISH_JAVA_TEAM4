@@ -37,7 +37,7 @@ public class Controller {
 
 		return stage;
 
-	}
+	} 
 
 	public void timer(int time) {
 		long now = System.currentTimeMillis();
