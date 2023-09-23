@@ -17,20 +17,34 @@ public class Controller {
 
 //	 스테이지 선택 (변경 가능성 높음)
 	public int getStage(String user) {
+		art.LoadingArt();
+		System.out.println("로딩중...");
+		timer(2);
 		this.user = user;
 		System.out.println("스테이지를 선택하세요");
-		System.out.println("1. 낚시터easy 2. 강가normal 3.바닷가hard");
+		System.out.println("1.실내 낚시터 2. 강가 3.바닷가");
 		int stage = sc.nextInt();
 		if (stage == 1) {
-			System.out.println("스테이지 1 입니다");
+			System.out.println("실내 낚시터로 떠납니다");
+			System.out.println("-낚시를 처음 하는 사람에게 좋은 곳입니다.");
 		} else if (stage == 2) {
-			System.out.println("스테이지 2 입니다");
+			System.out.println("강가로 떠납니다.");
+			System.out.println("-잔잔한 강에서 하는 낚시는 적당한 손맛을 기대할 수 있습니다.");
 		} else if (stage == 3) {
-			System.out.println("스테이지 3 입니다");
+			System.out.println("바닷가로 떠납니다.");
+			System.out.println("-파도치는 바위 위의 낚시는 로망입니다. 하지만 그만큼 힘듭니다.");
 		}
 
 		return stage;
 
+	}
+
+	public void timer(int time) {
+		long now = System.currentTimeMillis();
+		long currentTime = 0;
+		while (currentTime - now < time * 1000) {
+			currentTime = System.currentTimeMillis();
+		}
 	}
 
 	// 낚시 시작후 낚싯대 잡아채는 과정
@@ -41,7 +55,7 @@ public class Controller {
 			if (baitcnt == 0) {
 				System.out.println("미끼가 다 떨어졌습니다.");
 				break;
-			}else if(!isEnd){
+			} else if (!isEnd) {
 				System.out.println("낚시 종료");
 				break;
 			}
@@ -53,13 +67,7 @@ public class Controller {
 			long now = System.currentTimeMillis();
 			long currentTime = 0;
 
-			// 밀리세컨드라 000빼고 계산 : 30초
-			while (currentTime - now < timer * 1000) {
-				currentTime = System.currentTimeMillis();
-			}
-
-			// 타이머 끝
-
+			timer(timer);
 			// 물고기 크기에 따라 느낌표 수가 다르게 표시했음
 			// 물고기 낚이는 크기는 db와 연동할 예정
 			int rdfish = 0;
@@ -68,24 +76,22 @@ public class Controller {
 			} else if (stage == 2) {
 				rdfish = rd.nextInt(9) + 10;
 			} else {
-				rdfish = rd.nextInt(10) + 19;
+				rdfish = rd.nextInt(10) + 18;
 			}
 			FishDTO newfish = dao.fishAll().get(rdfish);
 			if (newfish.getLevel() == 1) {
 				art.Exclamation_mark1();
-				System.out.println("!");
 			} else if (newfish.getLevel() == 2) {
 				art.Exclamation_mark2();
-				System.out.println("!!");
 			} else if (newfish.getLevel() == 3) {
 				art.Exclamation_mark3();
-				System.out.println("!!!");
 			}
-
+			timer(1);
 			// 물고기 잡아채는 과정
 			System.out.println("스페이스키와 엔터키를 연타해서 물고기를 잡으세요!");
 			now = System.currentTimeMillis();
 			int cnt = 0;
+			int difficulty = 4;
 
 			// while문 안의 조건(정해진 시간이 넘어가면 반복문이 끝남)
 			while (currentTime - now < (15 - stage) * 1000) {
@@ -99,15 +105,20 @@ public class Controller {
 				if (getFish != null) {
 					cnt++;
 				}
+				if (cnt % 2 == 0) {
+					art.catchingArt();
+				} else {
+					art.catchingArt2();
+				}
 				for (int i = 0; i < cnt; i++) {
 					System.out.print("■");
 				}
 				// cnt값이 올라서 최대치까지 올라가기 전에 메세지 출력
-				if (cnt > 7 + stage * 4) {
-					System.out.println("거의 다 잡았어요!");
+				if (cnt > 7 + stage * difficulty) {
+					System.out.println("조금만 더!");
 				}
 				// 10이면 물고기 낚시 성공
-				if (cnt == 10 + stage * 5) {
+				if (cnt == 10 + stage * (difficulty + 1)) {
 					break;
 				}
 			}
@@ -116,7 +127,7 @@ public class Controller {
 				// 낚시 성공시 출력될 문장
 				System.out.println("낚싯대를 잡아챘습니다!");
 				if (newfish.getLevel() == 1) {
-					System.out.println("입질이 작습니다!");
+					System.out.println("작은 입질입니다!");
 				} else if (newfish.getLevel() == 2) {
 					System.out.println("적당한 입질입니다!!");
 				} else {
@@ -131,7 +142,7 @@ public class Controller {
 				isEnd = fightFish(newfish);
 			} else {
 				// 낚시 실패시 출력될 문장
-				System.out.println("놓쳤습니다...");
+				System.out.println("물고기가 미끼만 먹고 달아났습니다...");
 				baitcnt--;
 				// 다음 낚시까지 잠시 지연됨
 				now = System.currentTimeMillis();
@@ -160,7 +171,7 @@ public class Controller {
 				System.out.println("물고기를 낚았습니다!");
 				isEnd = resultFish(newfish);
 				break;
-			} else if (!catching.equals("1") && !catching.equals("2")) {
+			} else if (!catching.equals("1") && !catching.equals("2") && !catching.equals("3")) {
 				System.out.println("잘못 입력하셨습니다");
 
 			} else {
@@ -188,11 +199,7 @@ public class Controller {
 			max_name = getFishname;
 		}
 		System.out.println("로딩중...");
-		long now = System.currentTimeMillis();
-		long currentTime = 0;
-		while (currentTime - now < 2000) {
-			currentTime = System.currentTimeMillis();
-		}
+		timer(2);
 		while (true) {
 			System.out.println("1. 물고기 더 낚기 2. 지금까지 낚은 물고기 확인하기 3. 그만 낚기");
 			int select = sc.nextInt();
@@ -218,6 +225,8 @@ public class Controller {
 		for (int i = 0; i < todayGet.size(); i++) {
 			System.out.println(todayGet.get(i).getName());
 		}
+		System.out.println();
+		System.out.println("다시 낚시를 시작합니다");
 
 	}
 
