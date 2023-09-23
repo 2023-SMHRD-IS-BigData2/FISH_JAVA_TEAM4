@@ -111,7 +111,7 @@ public class Controller {
 					art.catchingArt2();
 				}
 				for (int i = 0; i < cnt; i++) {
-					System.out.print("■");
+					System.out.print("■■■");
 				}
 				// cnt값이 올라서 최대치까지 올라가기 전에 메세지 출력
 				if (cnt > 7 + stage * difficulty) {
