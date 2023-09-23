@@ -13,6 +13,7 @@ public class Controller {
 	private ArrayList<FishDTO> todayGet = new ArrayList<>();
 	private DAO dao = new DAO();
 	private String user;
+	private Art art = new Art();
 
 //	 스테이지 선택 (변경 가능성 높음)
 	public int getStage(String user) {
@@ -71,10 +72,13 @@ public class Controller {
 			}
 			FishDTO newfish = dao.fishAll().get(rdfish);
 			if (newfish.getLevel() == 1) {
+				art.Exclamation_mark1();
 				System.out.println("!");
 			} else if (newfish.getLevel() == 2) {
+				art.Exclamation_mark2();
 				System.out.println("!!");
 			} else if (newfish.getLevel() == 3) {
+				art.Exclamation_mark3();
 				System.out.println("!!!");
 			}
 
