@@ -16,7 +16,7 @@ public class Main_View {
 			System.out.println("1. 회원가입 2. 로그인&게임시작 3. 랭킹확인 4. 게임종료");
 			String select = sc.next();
 			// 1. 회원가입
-			if (select.equals("1")) {
+			if (select.equals("1")) { 
 				mdao.insertUser();
 			} else if (select.equals("2")) {
 				// 2. 로그인&게임시작

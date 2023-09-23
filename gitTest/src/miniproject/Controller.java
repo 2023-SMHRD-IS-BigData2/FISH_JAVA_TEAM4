@@ -248,7 +248,7 @@ public class Controller {
 	}
 
 	public void printrank() {
-		dao.rank();
+		dao.rank(); 
 	}
 
 }
