@@ -58,11 +58,11 @@ public class DAO {
 
 			int row = psmt.executeUpdate();
 
-//			if (row > 0) {
-//				System.out.println("insert 완료");
-//			} else {
-//				System.out.println("insert 실패");
-//			}
+			if (row > 0) {
+				System.out.println("회원가입 완료");
+			} else {
+				System.out.println("회원가입 실패");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -135,11 +135,11 @@ public class DAO {
 
 			int row = psmt.executeUpdate();
 
-//			if (row > 0) {
-//				System.out.println("insert 완료");
-//			} else {
-//				System.out.println("insert 실패");
-//			}
+			if (row > 0) {
+				System.out.println("랭킹 입력 완료");
+			} else {
+				System.out.println("랭킹 입력 실패");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -165,7 +165,7 @@ public class DAO {
 		getConn();
 		try {
 
-			String sql = "select * from RANKING ORDER BY RANKING_MAX_SIZE DESC";
+			String sql = "select * from (select * from RANKING ORDER BY RANKING_MAX_FISH_SIZE DESC) where rownum<=10";
 			psmt = conn.prepareStatement(sql);
 			// select 할 때만 달라지는 부분!!
 			ResultSet rs = psmt.executeQuery();

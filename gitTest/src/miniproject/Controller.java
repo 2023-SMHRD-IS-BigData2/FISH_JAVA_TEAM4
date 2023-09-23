@@ -12,9 +12,11 @@ public class Controller {
 	private Scanner sc = new Scanner(System.in);
 	private ArrayList<FishDTO> todayGet = new ArrayList<>();
 	private DAO dao = new DAO();
+	private String user;
 
 //	 스테이지 선택 (변경 가능성 높음)
-	public int getStage() {
+	public int getStage(String user) {
+		this.user = user;
 		System.out.println("스테이지를 선택하세요");
 		System.out.println("1. 낚시터easy 2. 강가normal 3.바닷가hard");
 		int stage = sc.nextInt();
@@ -33,9 +35,13 @@ public class Controller {
 	// 낚시 시작후 낚싯대 잡아채는 과정
 	public void fishing(int stage) {
 		int baitcnt = stage * 15;// 남은 미끼 수
+		boolean isEnd = true;
 		while (true) {
 			if (baitcnt == 0) {
 				System.out.println("미끼가 다 떨어졌습니다.");
+				break;
+			}else if(!isEnd){
+				System.out.println("낚시 종료");
 				break;
 			}
 			System.out.println("남은 미끼 수 : " + baitcnt);
@@ -45,7 +51,7 @@ public class Controller {
 			int timer = rd.nextInt(1) + 5;
 			long now = System.currentTimeMillis();
 			long currentTime = 0;
-			
+
 			// 밀리세컨드라 000빼고 계산 : 30초
 			while (currentTime - now < timer * 1000) {
 				currentTime = System.currentTimeMillis();
@@ -76,8 +82,7 @@ public class Controller {
 			System.out.println("스페이스키와 엔터키를 연타해서 물고기를 잡으세요!");
 			now = System.currentTimeMillis();
 			int cnt = 0;
-			
-			
+
 			// while문 안의 조건(정해진 시간이 넘어가면 반복문이 끝남)
 			while (currentTime - now < (15 - stage) * 1000) {
 				currentTime = System.currentTimeMillis();
@@ -94,11 +99,11 @@ public class Controller {
 					System.out.print("■");
 				}
 				// cnt값이 올라서 최대치까지 올라가기 전에 메세지 출력
-				if (cnt > 7+stage*4) {
+				if (cnt > 7 + stage * 4) {
 					System.out.println("거의 다 잡았어요!");
 				}
 				// 10이면 물고기 낚시 성공
-				if (cnt == 10+stage*5) {
+				if (cnt == 10 + stage * 5) {
 					break;
 				}
 			}
@@ -119,7 +124,7 @@ public class Controller {
 				while (currentTime - now < 500) {
 					currentTime = System.currentTimeMillis();
 				}
-				fightFish(newfish);
+				isEnd = fightFish(newfish);
 			} else {
 				// 낚시 실패시 출력될 문장
 				System.out.println("놓쳤습니다...");
@@ -138,9 +143,10 @@ public class Controller {
 	}
 
 	// 낚싯대를 잡아채는 방법과 낚인 물고기 레벨에 따라 낚시 성공 실패를 가를 예정
-	public void fightFish(FishDTO newfish) {
+	public boolean fightFish(FishDTO newfish) {
 		// 입질때 느낌표 개수에 따라서 fishsize가 변경됨
 		// 작은 물고기는 섬세한 낚아채기, 큰 물고기는 강력한 낚아채기가 필요
+		boolean isEnd = true;
 		while (true) {
 			System.out.println("물고기를 낚아챌 방법을 고르세요.");
 			System.out.println("1. 섬세한 낚아채기 2. 평범한 낚아채기 3. 강력한 낚아채기");
@@ -148,7 +154,7 @@ public class Controller {
 			if ((catching.equals("1") && newfish.getLevel() == 1) || (catching.equals("2") && (newfish.getLevel() == 2))
 					|| (catching.equals("3") && (newfish.getLevel() == 3))) {
 				System.out.println("물고기를 낚았습니다!");
-				resultFish(newfish);
+				isEnd = resultFish(newfish);
 				break;
 			} else if (!catching.equals("1") && !catching.equals("2")) {
 				System.out.println("잘못 입력하셨습니다");
@@ -158,12 +164,13 @@ public class Controller {
 				break;
 			}
 		}
+		return isEnd;
 
 	}
 
 	// 낚시 결과물
-	public void resultFish(FishDTO newfish) {
-
+	public boolean resultFish(FishDTO newfish) {
+		boolean isEnd = true;
 		String getFishname = newfish.getName();
 		double getFishsize = newfish.getSize();
 		double resultSize = getFishsize + rd.nextDouble() * 10;
@@ -183,17 +190,22 @@ public class Controller {
 			currentTime = System.currentTimeMillis();
 		}
 		while (true) {
-			System.out.println("1. 물고기 더 낚기 2. 지금까지 낚은 물고기 확인하기");
+			System.out.println("1. 물고기 더 낚기 2. 지금까지 낚은 물고기 확인하기 3. 그만 낚기");
 			int select = sc.nextInt();
 			if (select == 2) {
 				icebox();
 				break;
 			} else if (select == 1) {
 				break;
+			} else if (select == 3) {
+				finalResult();
+				isEnd = false;
+				break;
 			} else {
 				System.out.println("잘못입력하셨습니다");
 			}
 		}
+		return isEnd;
 
 	}
 
@@ -205,12 +217,12 @@ public class Controller {
 
 	}
 
-	public void finalResult(String user) {
+	public void finalResult() {
 		System.out.println("오늘 잡은 물고기 목록입니다.");
 		for (int i = 0; i < todayGet.size(); i++) {
 			System.out.println(todayGet.get(i).getName());
 		}
-		String rsuser= user ;
+		String rsuser = user;
 		System.out.println();
 		System.out.println("오늘 잡은 최대 물고기는 " + max_name + "입니다");
 		System.out.println("오늘 잡은 최대 물고기 크기는 " + max_size + "cm입니다.");
