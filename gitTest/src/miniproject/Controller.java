@@ -216,7 +216,8 @@ public class Controller {
 	public void icebox() {
 		System.out.println("지금까지 잡은 물고기 목록입니다.");
 		for (int i = 0; i < todayGet.size(); i++) {
-			System.out.println(todayGet.get(i).getName());
+			System.out.print(todayGet.get(i).getName()+" ");
+			System.out.println(todayGet.get(i).getSize()+"cm");
 		}
 
 	}
