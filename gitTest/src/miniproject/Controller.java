@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 public class Controller {
 	private Random rd = new Random();
 	private double max_size;
@@ -224,7 +226,13 @@ public class Controller {
 		System.out.println("지금까지 잡은 물고기 목록입니다.");
 		for (int i = 0; i < todayGet.size(); i++) {
 			System.out.print(todayGet.get(i).getName()+" ");
-			System.out.println(todayGet.get(i).getSize()+"cm");
+			if(todayGet.get(i).getLevel() == 1) {
+				System.out.println("(소)");
+			} else if(todayGet.get(i).getLevel() == 2) {
+				System.out.println("(중)");
+			}else if (todayGet.get(i).getLevel() == 3){
+				System.out.println("(대)");
+			}
 		}
 		System.out.println();
 		System.out.println("다시 낚시를 시작합니다");
