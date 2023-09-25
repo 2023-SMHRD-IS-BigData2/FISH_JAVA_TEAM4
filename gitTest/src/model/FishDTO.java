@@ -1,4 +1,4 @@
-package miniproject;
+package model;
 
 public class FishDTO {
 	private String name;

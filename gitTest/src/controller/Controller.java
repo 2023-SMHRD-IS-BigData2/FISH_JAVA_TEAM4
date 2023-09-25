@@ -1,4 +1,4 @@
-package miniproject;
+package controller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,8 +7,13 @@ import java.util.Scanner;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
+import model.Art;
+import model.DAO;
+import model.FishDTO;
+
 public class Controller {
 	private Random rd = new Random();
+	private MusicCon msc = new MusicCon();
 	private double max_size;
 	private String max_name;
 	private Scanner sc = new Scanner(System.in);
@@ -19,6 +24,7 @@ public class Controller {
 
 //	 스테이지 선택 (변경 가능성 높음)
 	public int getStage(String user) {
+
 		art.LoadingArt();
 		System.out.println("로딩중...");
 		timer(2);
@@ -36,6 +42,7 @@ public class Controller {
 			System.out.println("바닷가로 떠납니다.");
 			System.out.println("-파도치는 바위 위의 낚시는 로망입니다. 하지만 그만큼 힘듭니다.");
 		}
+	
 
 		return stage;
 
@@ -88,6 +95,7 @@ public class Controller {
 			} else if (newfish.getLevel() == 3) {
 				art.Exclamation_mark3();
 			}
+			msc.play(2);
 			timer(1);
 			// 물고기 잡아채는 과정
 			System.out.println("스페이스키와 엔터키를 연타해서 물고기를 잡으세요!");
@@ -96,7 +104,7 @@ public class Controller {
 			int difficulty = 4;
 
 			// while문 안의 조건(정해진 시간이 넘어가면 반복문이 끝남)
-			while (currentTime - now < (15 - stage) * 1000) {
+			while (currentTime - now < (10 - stage) * 1000) {
 				currentTime = System.currentTimeMillis();
 
 				// 입력값이 스페이스바나 null이 아니면 cnt 값이 올라감
@@ -116,7 +124,7 @@ public class Controller {
 					System.out.print("■■■");
 				}
 				// cnt값이 올라서 최대치까지 올라가기 전에 메세지 출력
-				if (cnt > 7 + stage * difficulty) {
+				if (cnt > 7 + stage * (difficulty+newfish.getLevel())) {
 					System.out.println("조금만 더!");
 				}
 				// 10이면 물고기 낚시 성공
@@ -145,6 +153,7 @@ public class Controller {
 			} else {
 				// 낚시 실패시 출력될 문장
 				System.out.println("물고기가 미끼만 먹고 달아났습니다...");
+				msc.play(3);
 				baitcnt--;
 				// 다음 낚시까지 잠시 지연됨
 				now = System.currentTimeMillis();
@@ -171,6 +180,7 @@ public class Controller {
 			if ((catching.equals("1") && newfish.getLevel() == 1) || (catching.equals("2") && (newfish.getLevel() == 2))
 					|| (catching.equals("3") && (newfish.getLevel() == 3))) {
 				System.out.println("물고기를 낚았습니다!");
+				msc.play(1);
 				isEnd = resultFish(newfish);
 				break;
 			} else if (!catching.equals("1") && !catching.equals("2") && !catching.equals("3")) {
@@ -178,6 +188,7 @@ public class Controller {
 
 			} else {
 				System.out.println("물고기가 도망갔습니다...");
+				msc.play(3);
 				break;
 			}
 		}
