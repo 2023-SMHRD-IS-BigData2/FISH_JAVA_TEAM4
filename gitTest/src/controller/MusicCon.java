@@ -12,10 +12,11 @@ public class MusicCon {
 		player = new MP3Player();
 		musics = new MusicVO[4];
 		
-		musics[0] = new MusicVO("타이틀", "시스템", "C:\\Users\\SMHRD\\Desktop\\JAVA\\MiniProject\\타이틀.mp3", 8);
-		musics[1] = new MusicVO("낚음", "시스템", "C:\\Users\\SMHRD\\Desktop\\JAVA\\MiniProject\\낚음.mp3", 4);
-		musics[2] = new MusicVO("미끼_물었을때", "노라조", "C:\\Users\\SMHRD\\Desktop\\JAVA\\MiniProject\\미끼물었을때.mp3", 1);
-		musics[3] = new MusicVO("놓쳤을때", "시스템", "C:\\Users\\SMHRD\\Desktop\\JAVA\\MiniProject\\놓쳤을때.mp3", 3);
+
+		musics[0] = new MusicVO("타이틀", "시스템", "./타이틀.mp3", 8);
+		musics[1] = new MusicVO("낚음", "시스템", "./낚음.mp3", 4);
+		musics[2] = new MusicVO("미끼_물었을때", "노라조", "./미끼물었을때.mp3", 1);
+		musics[3] = new MusicVO("놓쳤을때", "시스템", "./놓쳤을때.mp3", 3);
 	}
 
 	public void play(int number) {
@@ -26,8 +27,6 @@ public class MusicCon {
 		player.play(musics[number].getRoute());
 	}// play 메소드 끝
 	
-	public void stop() {
-		player.stop();
-	}
+
 }
 
