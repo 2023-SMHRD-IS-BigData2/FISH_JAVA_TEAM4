@@ -1,5 +1,6 @@
 package miniproject;
 
+
 public class Art {
 	public void Exclamation_mark1() {
 
@@ -46,42 +47,44 @@ public class Art {
 		System.out.println("  ###         ###         ###");
 	}
 	public void catchingArt() {
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println("       ##");
-		System.out.println("⠀    ⠀|  ## ");
-		System.out.println("⠀⠀ ⠀⠀⠀|⠀⠀⠀⠀##⠀");
-		System.out.println("      |⠀⠀⠀⠀⠀⠀##⡄");
-		System.out.println("⠀    |⠀⠀⠀⠀⠀⠀⠀⠀##");
-		System.out.println("⠀    |⠀⠀⠀⠀⠀    ##");
-		System.out.println("⠀    |⠀⠀⠀⠀⠀⠀    ##");
-		System.out.println("⠀   |⠀⠀⠀⠀⠀⠀     ##");
-		System.out.println("  (⠀|⠀)         ##");
-		System.out.println(" ((⠀#⠀))         ##");		
-		System.out.println("                 ## ");
+		System.out.println(".....................");
+		System.out.println(".....................");
+		System.out.println(".....................");
+		System.out.println(".....................");
+		System.out.println(".....................");
+		System.out.println(".....................");
+		System.out.println(".......##............");
+		System.out.println("......|.##...........");
+		System.out.println("......|...##.........");
+		System.out.println("......|....##........");
+		System.out.println("......|......##......");
+		System.out.println(".....|........##.....");
+		System.out.println(".....|.........##....");
+		System.out.println("....|...........##...");
+		System.out.println("..(.|.)..........##..");
+		System.out.println(".((.#.)).........##..");		
+		System.out.println(".................##..");
 
 	}
 	
 	public void catchingArt2() {
-		System.out.println();
-		System.out.println();		
-		System.out.println("       ##");
-		System.out.println("⠀    ⠀|  ## ");
-		System.out.println("⠀⠀ ⠀⠀⠀|⠀⠀⠀⠀##⠀");
-		System.out.println("      |⠀⠀⠀⠀⠀⠀##");
-		System.out.println("     |⠀⠀⠀⠀⠀ ⠀ ##");
-		System.out.println("     |⠀⠀⠀⠀⠀⠀  ##");
-		System.out.println("⠀    |⠀⠀⠀⠀⠀⠀⠀ ⠀##");
-		System.out.println("⠀    |⠀⠀⠀⠀⠀⠀⠀ ⠀##");
-		System.out.println("⠀   |⠀⠀⠀⠀⠀⠀    ##");
-		System.out.println("⠀ (⠀|⠀)⠀⠀⠀⠀⠀⠀⠀  ##⠀");
-		System.out.println("⠀((⠀#⠀))⠀⠀⠀⠀⠀⠀  ##");
-		System.out.println("                ##");
-		System.out.println("                 ##");		
-		System.out.println("                 ## ");
+		System.out.println(".....................");
+		System.out.println(".....................");
+		System.out.println(".....................");
+		System.out.println("..........##.........");
+		System.out.println("........|...##.......");
+		System.out.println("........|.....##.....");
+		System.out.println(".......|........##...");
+		System.out.println("......|.........##...");
+		System.out.println(".....|...........##..");
+		System.out.println(".....|...........##..");
+		System.out.println(".....|............##.");
+		System.out.println("....|.............##.");
+		System.out.println("..(.|.)...........##.");
+		System.out.println(".((.#.))..........##.");
+		System.out.println("..................##.");
+		System.out.println("..................##.");		
+		System.out.println(".................##..");
 
 		}
 	
@@ -101,7 +104,7 @@ public class Art {
 		System.out.println("    `####################            `##`     `###      ` `###``         ###  ````#################### `            ` ###   ###`         ###`    ###` ###`    ### `       `###`   ");
 		System.out.println("                      `##`           `##`       ``    `#####`   `        ###   `                  `###      ``     ``###```###```         ###`   `###`##`    ###`           ###``  ");
 		System.out.println("     ####################``````      `##`             `                  ###  `  `####################`   `#####```####`  `##`          ` `###`` ``####``   ###`          ` `###  ");
-		System.out.println("     ##`````````````````` `#############################``               ###  `` `##````````````````````  ````######``` ` ```             ````` `    ####``      ` ``` `         `  ```   ");
+		System.out.println("     ##`````````````````` `#############################``               ###  `` `##````````````````````  ````######``` ` ```             ````` `  ####``      ` ``` `         `  ```   ");
 		System.out.println("     ##` `````````````````   ` `                                         ###     `##                 ```                                                                             ");
 		System.out.println("   ``#####################                                               ###     `####################`                                                                    ");
 		System.out.println("");
@@ -109,28 +112,28 @@ public class Art {
 	}
 	
     public void LoadingArt() {
-    	System.out.println("   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀####⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
-    	System.out.println("   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀####⠀⠀⠀⠀⠀");
-    	System.out.println("   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀##⠀  |⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ####⠀⠀⠀⠀⠀⠀⠀⠀⠀ ##⠀⠀ ⠀⠀|⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀#########⠀⠀⠀⠀⠀⠀⠀⠀##⠀⠀⠀⠀  |⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ############⠀⠀⠀⠀⠀⠀##⠀⠀⠀ ⠀ ⠀|⠀⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀#######################⠀⠀⠀ ⠀  ⠀|⠀⠀⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀##########     ######⠀⠀⠀⠀⠀⠀⠀ ⠀ |⠀⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀########⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀|⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀         ######            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ |⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀ ##⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ |⠀⠀⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀⠀##⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀⠀##⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀⠀##⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀⠀##⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀⠀");
-    	System.out.println("    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀######⠀⠀⠀⠀⠀⠀⠀##⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀⠀______________________##⠀⠀⠀⠀            |");
-    	System.out.println(" ⠀⠀⠀⠀⠀########################⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀");
-    	System.out.println("                                              #");
-    	System.out.println(" ⠀⠀⠀⠀⠀⠀⠀ $$$$$$      $$$$$$     $$$$$$     $$$$$$$⠀⠀⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀ $$$$$$$$$$$   $$$$$$$$   $$$$$$$$   $$$$$$$$$⠀⠀⠀");
-    	System.out.println(" ⠀⠀⠀⠀$$$$      $$$$$$$    $$$$$$$    $$$$$$$$  ⠀⠀");
+    	System.out.println("......................####........................");
+    	System.out.println(".....................######..........####.........");
+    	System.out.println(".....................######.........##...|........");
+    	System.out.println("......................####.........##....|........");
+    	System.out.println("...................#########......##.....|........");
+    	System.out.println("................############......##.....|........");
+    	System.out.println(".............######################......|........");
+    	System.out.println(".............##########.....######.......|........");
+    	System.out.println(".............########....................|........");
+    	System.out.println(".............######......................|........");
+    	System.out.println(".............######......................|........");
+    	System.out.println(".............######.........##...........|........");
+    	System.out.println(".............######.........##...........|........");
+    	System.out.println(".............######.........##...........|........");
+    	System.out.println(".............######.........##...........|........");
+    	System.out.println(".............######.........##...........|........");
+    	System.out.println(".............######.........##...........|........");
+    	System.out.println("......______________________##...........|........");
+    	System.out.println("......########################...........|........");
+    	System.out.println("");
+    	System.out.println("........$$$$$$.......$$$$$$.....$$$$$$......$$$$$$$");
+    	System.out.println("......$$$$$$$$$$$...$$$$$$$$...$$$$$$$$...$$$$$$$$$");
+    	System.out.println(".....$$$$......$$$$$$$.....$$$$$$$....$$$$$$$......");
     }
 }
