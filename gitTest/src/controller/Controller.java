@@ -218,8 +218,8 @@ public class Controller {
 			int select = sc.nextInt();
 			if (select == 2) {
 				icebox();
-				break;
 			} else if (select == 1) {
+				System.out.println("다시 낚시를 시작합니다");
 				break;
 			} else if (select == 3) {
 				finalResult();
@@ -246,7 +246,7 @@ public class Controller {
 			}
 		}
 		System.out.println();
-		System.out.println("다시 낚시를 시작합니다");
+		
 
 	}
 
