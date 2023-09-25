@@ -11,7 +11,7 @@ public class MusicCon {
 	public MusicCon() {
 		player = new MP3Player();
 		musics = new MusicVO[4];
-		
+		 
  
 		musics[0] = new MusicVO("타이틀", "시스템", "./타이틀.mp3", 8);
 		musics[1] = new MusicVO("낚음", "시스템", "./낚음.mp3", 4);
