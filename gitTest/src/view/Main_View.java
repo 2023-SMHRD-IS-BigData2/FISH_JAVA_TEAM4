@@ -48,6 +48,7 @@ public class Main_View {
 
 			} else if (select.equals("4")) {
 				System.out.println("게임을 종료합니다.");
+				msc.stop();
 				break;
 			} else {
 				System.out.println("잘못된 입력입니다.");
