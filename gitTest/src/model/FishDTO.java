@@ -14,10 +14,11 @@ public class FishDTO {
 		this.index = index;
 	}
 	
-	public FishDTO(String name, double size) {
+	public FishDTO(String name, double size, int level) {
 		super();
 		this.name = name;
 		this.size = size;
+		this.level = level;
 	} 
 
 	public String getName() {

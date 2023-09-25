@@ -63,9 +63,11 @@ public class Controller {
 		while (true) {
 			if (baitcnt == 0) {
 				System.out.println("미끼가 다 떨어졌습니다.");
+				
 				break;
 			} else if (!isEnd) {
 				System.out.println("낚시 종료");
+				
 				break;
 			}
 			System.out.println("남은 미끼 수 : " + baitcnt);
@@ -152,6 +154,7 @@ public class Controller {
 				isEnd = fightFish(newfish);
 			} else {
 				// 낚시 실패시 출력될 문장
+				art.fail();
 				System.out.println("물고기가 미끼만 먹고 달아났습니다...");
 				msc.play(3);
 				baitcnt--;
@@ -187,6 +190,7 @@ public class Controller {
 				System.out.println("잘못 입력하셨습니다");
 
 			} else {
+				art.fail();
 				System.out.println("물고기가 도망갔습니다...");
 				msc.play(3);
 				break;
@@ -203,9 +207,17 @@ public class Controller {
 		double getFishsize = newfish.getSize();
 		double resultSize = getFishsize + rd.nextDouble() * 10;
 		String result = String.format("%.2f", resultSize);
+		if (newfish.getLevel() == 1) {
+			art.FishPrint1();
+		} else if (newfish.getLevel() == 2) {
+			art.FishPrint2();
+		} else if (newfish.getLevel() == 3) {
+			art.FishPrint3();
+		}
+		int getLevel = newfish.getLevel();
 		System.out.println("잡은 물고기는 " + getFishname + "이었습니다");
 		System.out.println("잡은 물고기 크기는" + result + "cm입니다");
-		FishDTO fs = new FishDTO(getFishname, getFishsize);
+		FishDTO fs = new FishDTO(getFishname, getFishsize,getLevel);
 		todayGet.add(fs);
 		if (Double.valueOf(result) > max_size) {
 			max_size = Double.valueOf(result);
@@ -222,7 +234,7 @@ public class Controller {
 				System.out.println("다시 낚시를 시작합니다");
 				break;
 			} else if (select == 3) {
-				finalResult();
+				
 				isEnd = false;
 				break;
 			} else {
@@ -234,6 +246,7 @@ public class Controller {
 	}
 
 	public void icebox() {
+		art.icebox();
 		System.out.println("지금까지 잡은 물고기 목록입니다.");
 		for (int i = 0; i < todayGet.size(); i++) {
 			System.out.print(todayGet.get(i).getName()+" ");

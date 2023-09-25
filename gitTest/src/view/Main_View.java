@@ -33,8 +33,8 @@ public class Main_View {
 				fs.finalResult();
 			} else if (select.equals("3")) {
 				// 3. 랭킹확인
-				fs.printrank();
 				while (true) {
+					fs.printrank();
 					System.out.println("1. 타이틀로 돌아가기");
 					String goback = sc.next();
 					if (!goback.equals("1")) {
