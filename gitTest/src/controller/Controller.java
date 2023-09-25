@@ -33,16 +33,21 @@ public class Controller {
 		System.out.println("1.실내 낚시터 2. 강가 3.바닷가");
 		int stage = sc.nextInt();
 		if (stage == 1) {
+			msc.play(4);
 			System.out.println("실내 낚시터로 떠납니다");
 			System.out.println("-낚시를 처음 하는 사람에게 좋은 곳입니다.");
 		} else if (stage == 2) {
+			msc.play(5);
 			System.out.println("강가로 떠납니다.");
 			System.out.println("-잔잔한 강에서 하는 낚시는 적당한 손맛을 기대할 수 있습니다.");
 		} else if (stage == 3) {
+			msc.play(6);
 			System.out.println("바닷가로 떠납니다.");
 			System.out.println("-파도치는 바위 위의 낚시는 로망입니다. 하지만 그만큼 힘듭니다.");
 		}
-	
+		System.out.println("로딩중...");
+		timer(9);
+		
 
 		return stage;
 
@@ -61,20 +66,20 @@ public class Controller {
 		int baitcnt = stage * 15;// 남은 미끼 수
 		boolean isEnd = true;
 		while (true) {
+			msc.play(7);
 			if (baitcnt == 0) {
 				System.out.println("미끼가 다 떨어졌습니다.");
 				
 				break;
 			} else if (!isEnd) {
 				System.out.println("낚시 종료");
-				
 				break;
 			}
 			System.out.println("남은 미끼 수 : " + baitcnt);
 
 			// 타이머
 			// timer 값에 따라 정해진 시간만큼 지연된 후에 다음 코드가 출력됨
-			int timer = rd.nextInt(1) + 5;
+			int timer = rd.nextInt(5) + 5;
 			long now = System.currentTimeMillis();
 			long currentTime = 0;
 
@@ -101,6 +106,7 @@ public class Controller {
 			timer(1);
 			// 물고기 잡아채는 과정
 			System.out.println("스페이스키와 엔터키를 연타해서 물고기를 잡으세요!");
+			msc.play(8);
 			now = System.currentTimeMillis();
 			int cnt = 0;
 			int difficulty = 4;
@@ -216,7 +222,7 @@ public class Controller {
 		}
 		int getLevel = newfish.getLevel();
 		System.out.println("잡은 물고기는 " + getFishname + "이었습니다");
-		System.out.println("잡은 물고기 크기는" + result + "cm입니다");
+		System.out.println("잡은 물고기 크기는 " + result + "cm입니다");
 		FishDTO fs = new FishDTO(getFishname, getFishsize,getLevel);
 		todayGet.add(fs);
 		if (Double.valueOf(result) > max_size) {
@@ -238,7 +244,7 @@ public class Controller {
 				isEnd = false;
 				break;
 			} else {
-				System.out.println("잘못입력하셨습니다");
+				System.out.println("잘못 입력하셨습니다");
 			}
 		}
 		return isEnd;

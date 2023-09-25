@@ -19,6 +19,7 @@ public class Main_View {
 		Art art = new Art();
 		while (true) {
 			msc.play(0);
+			
 			art.title();
 			System.out.println("1. 회원가입 2. 로그인&게임시작 3. 랭킹확인 4. 게임종료");
 			String select = sc.next();
@@ -28,6 +29,7 @@ public class Main_View {
 			} else if (select.equals("2")) {
 				// 2. 로그인&게임시작
 				String user = mdao.userLogin();
+				msc.stop();
 				int stage = fs.getStage(user);
 				fs.fishing(stage);
 				fs.finalResult();
