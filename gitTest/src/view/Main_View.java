@@ -6,7 +6,6 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import controller.Controller;
 import controller.MusicCon;
-import model.Art;
 import model.DAO;
 
 public class Main_View {
@@ -16,7 +15,7 @@ public class Main_View {
 		DAO mdao = new DAO();
 		Scanner sc = new Scanner(System.in);
 		Controller fs = new Controller();
-		Art art = new Art();
+		Sub_View_Art art = new Sub_View_Art();
 		while (true) {
 			msc.play(0);
 			
@@ -48,7 +47,7 @@ public class Main_View {
 
 			} else if (select.equals("4")) {
 				System.out.println("게임을 종료합니다.");
-				msc.stop();
+				msc.stop(); 
 				break;
 			} else {
 				System.out.println("잘못된 입력입니다.");

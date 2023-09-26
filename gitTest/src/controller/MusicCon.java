@@ -23,7 +23,7 @@ public class MusicCon {
 		musics[7] = new MusicVO("낚시도중", "시스템", "./낚시도중.mp3", 148);
 		musics[8] = new MusicVO("입질왔음", "시스템", "./입질왔음.mp3", 336);
 		
-		
+		 
 	}
 
 	public void play(int number) {

@@ -11,7 +11,7 @@ public class FishDTO {
 		this.name = name;
 		this.size = size;
 		this.level = level;
-		this.index = index;
+		this.index = index; 
 	}
 	
 	public FishDTO(String name, double size, int level) {

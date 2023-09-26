@@ -11,7 +11,7 @@ public class MusicVO {
 	}
 
 	public String getSinger() {
-		return singer;
+		return singer; 
 	}
 
 	public String getRoute() {

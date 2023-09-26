@@ -1,7 +1,7 @@
-package model;
+package view;
 
 
-public class Art {
+public class Sub_View_Art {
 	public void Exclamation_mark1() {
 
 		System.out.println("...#####...");

@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-import model.Art;
 import model.DAO;
 import model.FishDTO;
+import view.Sub_View_Art;
 
 public class Controller {
 	private Random rd = new Random();
@@ -20,7 +20,7 @@ public class Controller {
 	private ArrayList<FishDTO> todayGet = new ArrayList<>();
 	private DAO dao = new DAO();
 	private String user;
-	private Art art = new Art();
+	private Sub_View_Art art = new Sub_View_Art();
 
 //	 스테이지 선택 (변경 가능성 높음)
 	public int getStage(String user) {
@@ -283,7 +283,7 @@ public class Controller {
 		} else {
 			System.out.println("오늘은 잡은 물고기가 없습니다.");
 		}
-		msc.stop();
+		msc.stop(); 
 
 	}
 
