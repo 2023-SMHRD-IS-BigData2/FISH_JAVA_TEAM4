@@ -1,6 +1,5 @@
-# Team4
-NewsData Project
-## Mini Project 
+# 물고기를 JAVA조(Mini Project)
+물고기를 JAVA(장우준,김다원,김명준,손지우)
 
 <프로젝트 소개>
 ![물고기를JAVA_애니메이션 pptx - 한컴오피스 Web v2 한쇼 - Chrome 2023-09-26 오후 12_27_05](https://github.com/2023-SMHRD-IS-BigData2/FISH_JAVA_TEAM4/assets/145407027/1aa560c4-188f-40c5-a10d-72a94efca181)
